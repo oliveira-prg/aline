@@ -1,0 +1,150 @@
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000 url('https://exemplo.com/sua-imagem-de-fundo-estrelada.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            cursor: default;
+        }
+
+        #universe {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .planet:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+        }
+
+        #main-planet {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url('https://exemplo.com/planeta-principal.png');
+            font-size: 1.5em;
+            z-index: 10;
+        }
+
+        .satellite {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+        }
+
+        /* Posicione os satélites ao redor do planeta principal */
+        #qualidades { top: 25%; left: 70%; background-image: url('https://exemplo.com/planeta-qualidades.png'); }
+        #musicas { top: 70%; left: 25%; background-image: url('https://exemplo.com/planeta-musicas.png'); }
+        #sonhos { top: 70%; left: 70%; background-image: url('https://exemplo.com/planeta-sonhos.png'); }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .overlay-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid #e94584;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #e94584;
+            cursor: pointer;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .quality-star {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background: rgba(233, 69, 132, 0.2);
+            border-radius: 20px;
+            border: 1px solid #e94584;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quality-star:hover {
+            background: rgba(233, 69, 132, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .music-player {
+            margin: 15px 0;
+        }
+
+        .dream-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #e94584;
+            text-align: left;
+        }
+
+        #final-message {
+            display: none;
+        }
+    </style>
