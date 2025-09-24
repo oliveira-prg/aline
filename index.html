@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Universo dos Meus Sentimentos por [Nome Dela]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000 url('https://exemplo.com/sua-imagem-de-fundo-estrelada.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            cursor: default;
+        }
+
+        #universe {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .planet:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+        }
+
+        #main-planet {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url('https://exemplo.com/planeta-principal.png');
+            font-size: 1.5em;
+            z-index: 10;
+        }
+
+        .satellite {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+        }
+
+        /* Posicione os satélites ao redor do planeta principal */
+        #qualidades { top: 25%; left: 70%; background-image: url('https://exemplo.com/planeta-qualidades.png'); }
+        #musicas { top: 70%; left: 25%; background-image: url('https://exemplo.com/planeta-musicas.png'); }
+        #sonhos { top: 70%; left: 70%; background-image: url('https://exemplo.com/planeta-sonhos.png'); }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .overlay-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid #e94584;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #e94584;
+            cursor: pointer;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .quality-star {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background: rgba(233, 69, 132, 0.2);
+            border-radius: 20px;
+            border: 1px solid #e94584;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quality-star:hover {
+            background: rgba(233, 69, 132, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .music-player {
+            margin: 15px 0;
+        }
+
+        .dream-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #e94584;
+            text-align: left;
+        }
+
+        #final-message {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="universe">
+        <!-- Planeta Principal -->
+        <div class="planet" id="main-planet">Para Aline,<br>Minha Via Láctea</div>
+
+        <!-- Planetas Satélites -->
+        <div class="planet satellite" id="qualidades" title="Suas Qualidades"></div>
+        <div class="planet satellite" id="musicas" title="Nossa Trilha Sonora"></div>
+        <div class="planet satellite" id="sonhos" title="Nossos Sonhos"></div>
+    </div>
+
+    <div id="qualidades-overlay" class="overlay">
+        <span class="close-btn">&times;</span>
+        <div class="overlay-content">
+            <h2><i class="fas fa-star"></i> As Qualidades que Me Encantam</h2>
+            <p>Você é uma constelação de coisas maravilhosas.</p>
+            <div>
+                <span class="quality-star">Seu Sorriso</span>
+                <span class="quality-star">Sua Inteligência</span>
+                <span class="quality-star">Sua Coragem</span>
+                <span class="quality-star">Sua Gentileza</span>
+                <span class="quality-star">Seu Humor</span>
+                <span class="quality-star">Sua Compaixão</span>
+                <span class="quality-star">Você</span>
+                <!-- Adicione mais -->
+            </div>
+        </div>
+    </div>
+
+    <div id="musicas-overlay" class="overlay">
+        <span class="close-btn">&times;</span>
+        <div class="overlay-content">
+            <h2><i class="fas fa-music"></i> Nossa Trilha Sonora</h2>
+            <p>Essas músicas me levam direto para você.</p>
+            <div class="music-player">
+                <iframe style="border-radius:12px"
+    src="https://open.spotify.com/embed/playlist/65RijEV9GBCQ07Dxqd3kF2?utm_source=generator"
+    width="100%" height="80" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    allowfullscreen>
+</iframe>
+                <!-- Adicione mais players se quiser -->
+            </div>
+        </div>
+    </div>
+
+    <div id="sonhos-overlay" class="overlay">
+        <span class="close-btn">&times;</span>
+        <div class="overlay-content">
+            <h2><i class="fas fa-rocket"></i> Meu maior sonho</h2>
+            <p>Mal posso esperar para construir isso ao seu lado.</p>
+            <div class="dream-item">
+                <h3>Casar com você</h3>
+                <p>E viver a vida como deve ser vivida, ao seu lado.</p>
+            </div>
+            <div class="dream-item">
+                <h3>Ter nosso cantinho</h3>
+                <p>Com uma varanda para ver o pôr do sol juntos.</p>
+            </div>
+            <div class="dream-item">
+                <h3>Viajar o mundo</h3>
+                <p>Descobrir novos lugares e culturas com você.</p>
+            </div>
+            <div class="dream-item">
+                <h3>Construir uma família</h3>
+                <p>Criar nossos filhos com todo o amor do mundo.</p>
+            </div>
+            <div class="dream-item">
+                <h3>Crescer juntos</h3>
+                <p>Envelhecer ao seu lado, sempre aprendendo e amando mais.</p>
+            </div>
+            <div class ="dream-item">
+                <h3>Realizar nossos sonhos</h3>
+                <p>Transformar cada sonho em realidade, juntos.</p>
+            </div>
+            <div class ="dream-item">
+                <h3>Amar você, mais do que todas as coisas</h3>
+                <p>Porque você é meu maior sonho.</p>
+            </div>
+            <!-- Adicione mais sonhos -->
+        </div>
+    </div>
+
+    <div id="final-message" class="overlay">
+        <div class="overlay-content">
+            <h1>Eu quero tanto você</h1>
+            <p>Mais do que todas as estrelas deste universo que criei para você.<br>Você é o meu sempre.</p>
+            <p>Com todo o meu amor,<br>Aline</p>
+            <button id="restart-journey" style="margin-top: 20px; padding: 10px 20px; background: #e94584; color: white; border: none; border-radius: 5px; cursor: pointer;">Explorar Novamente</button>
+        </div>
+    </div>
+
+    <script>
+        // Mapeia os planetas para seus overlays
+        const planets = {
+            'qualidades': 'qualidades-overlay',
+            'musicas': 'musicas-overlay',
+            'sonhos': 'sonhos-overlay'
+        };
+
+        // Adiciona evento de clique a cada planeta
+        Object.keys(planets).forEach(planetId => {
+            document.getElementById(planetId).addEventListener('click', () => {
+                document.getElementById(planets[planetId]).style.display = 'flex';
+            });
+        });
+
+        // Adiciona evento de clique ao planeta principal
+        document.getElementById('main-planet').addEventListener('click', () => {
+            document.getElementById('final-message').style.display = 'flex';
+        });
+
+        // Adiciona evento de fechar a todos os botões de fechar
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.closest('.overlay').style.display = 'none';
+            });
+        });
+
+        // Fecha o overlay clicando fora do conteúdo
+        document.querySelectorAll('.overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+
+        // Botão para reiniciar a jornada
+        document.getElementById('restart-journey').addEventListener('click', () => {
+            document.getElementById('final-message').style.display = 'none';
+        });
+
+        // Adiciona estrelas cintilantes ao fundo dinamicamente
+        function createStars() {
+            const universe = document.getElementById('universe');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'absolute';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.backgroundColor = 'white';
+                star.style.borderRadius = '50%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random();
+                star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite alternate`;
+                universe.appendChild(star);
+            }
+        }
+
+        // Adiciona animação de cintilação
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0% { opacity: 0.2; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        createStars();
+    </script>
+</body>
+</html>
